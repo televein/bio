@@ -62,7 +62,7 @@ const FoodCard = ({ item }) => {
           Additional mobile-specific elements
         </div> */}
 
-        <div className="gap-2 items-start flex px-5 pb-3 pt-3 flex-col w-full object-cover rounded-lg"></div>
+        {/* <div className="gap-2 items-start flex px-5 pb-3 pt-3 flex-col w-full object-cover rounded-lg"></div>
 
         {addedItem && (
           <div
@@ -70,7 +70,7 @@ const FoodCard = ({ item }) => {
           >
             <h1>Added to Cart</h1> <AiOutlineCheck size={24} />
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );

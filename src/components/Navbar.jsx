@@ -61,7 +61,7 @@ function Navbar() {
               </div>
             </Link> */}
             {/* Login button */}
-            {loginStatus === 'failure' && (
+            {/* {loginStatus === 'failure' && (
               <Link to="/login" className="bg-blue-400 hover:bg-blue-500 px-5 py-1 hover:shadow-lg rounded-full flex justify-between items-center gap-3 cursor-pointer">
                 <button >
                   Login
@@ -72,7 +72,7 @@ function Navbar() {
               <Link to="/user" className="bg-blue-400 hover:bg-blue-500  hover:shadow-lg rounded-full flex justify-between items-center gap-3 cursor-pointer">
                 <button><FaUser size={24} /></button>
               </Link>
-            )}
+            )} */}
           </div>
         </div>
         {nav ? (

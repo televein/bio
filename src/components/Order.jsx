@@ -1,19 +1,20 @@
-import React, { useRef, useState } from 'react';
-import emailjs from '@emailjs/browser';
+import React, { useEffect, useState } from 'react';
+import {AiOutlineCheck} from 'react-icons/ai';
+import { useNavigate } from 'react-router-dom';
 
 const CakeOrderForm = () => {
   const [selectedWeight, setSelectedWeight] = useState(null);
   const [selectedLayer, setSelectedLayer] = useState(null);
   const [selectedTheme, setSelectedTheme] = useState(null);
   const [selectedFlavor, setSelectedFlavor] = useState(null);
-  const [description, setDescription] = useState('');
-  const [deliveryDate, setDeliveryDate] = useState({
-    day: '01',
-    month: 'January',
-    year: '2020',
-  });
+  const [description, setDescription] = useState(null);
+  const [deliveryDate, setDeliveryDate] = useState(null);
+  const navigate = useNavigate();
+  const [fullName, setFullName] = useState(null);
+  const [address, setAddress] = useState(null);
+  const [phoneNumber, setPhoneNumber] = useState(null);
+  const [city,setCity] = useState(null);
 
-  const form = useRef();
 
   const renderButton = (value, onClick, isSelected) => (
     <button
@@ -25,41 +26,89 @@ const CakeOrderForm = () => {
       {value}
     </button>
   );
+  const [orderPlaced, setOrderPlaced] = useState(false);
+  const [wrong, setWrong] = useState(false);
+  const [emailData, setEmailData] = useState({
+    to: 'televeininfo@gmail.com',
+    subject: 'Regarding Your Inquiry',
+    selectedWeight,
+    selectedLayer,
+    selectedTheme,
+    selectedFlavor,
+    description,
+    deliveryDate,
+    fullName,
+    address,
+    phoneNumber,
+    city,
+    message: 'This is the content of my email.',
+  });
 
-  const sendEmail = (e) => {
-    e.preventDefault();
+  const handleButtonClick = async () => {
+    // Update emailData before sending email
+    setEmailData({
+      to: 'televeininfo@gmail.com',
+      subject: 'Our customer ordered the cake.',
+      selectedWeight: selectedWeight,
+      selectedLayer: selectedLayer,
+      selectedTheme: selectedTheme,
+      selectedFlavor: selectedFlavor,
+      description: description,
+      deliveryDate: deliveryDate,
+      fullName:fullName,
+      address:address,
+      phoneNumber:phoneNumber,
+      city:city,
+      message: 'This is the order details.',
+  });
 
-  
-
-    // You can also include the order details in the email, for example:
-    const orderDetails = {
-      selectedWeight,
-      selectedLayer,
-      selectedTheme,
-      selectedFlavor,
-      description,
-      deliveryDate,
-    };
-
-    emailjs.sendForm('service_6ojok14', 'template_ivinqlz', form.current, 'Z2njvmvcI-wjo7maa')
-    .then((result) => {
-      console.log(result.text);
-      console.log(selectedWeight);
-    }, (error) => {
-      console.log(error.text);
-    });
-  
   };
+  
+  
+    const sendEmail = async () => {
+      if((emailData.selectedWeight !== null)&&(emailData.selectedLayer!== null)&&(emailData.selectedTheme!== null)&&(emailData.selectedFlavor!== null)&&(emailData.description!== null)&&(emailData.deliveryDate!== null)&&(emailData.fullName!== null)&&(emailData.address!== null)&&(emailData.phoneNumber!== null)&&(emailData.city!== null)){
+                try {
+          // const response = await fetch('http://localhost:3002/send-email', {
+          const response = await fetch('https://server-aimq.onrender.com/send-email', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(emailData),
+          });
+          console.log("4");
+          if (response.ok) {
+            setOrderPlaced(true);
+            setTimeout(() => {
+              setOrderPlaced(false);
+              navigate('/');
+            }, 1500);
+            console.log('Email sent successfully!');
+            console.log(selectedLayer);
+          } else {
+            console.error('Failed to send email.');
+           
+          }
+        } catch (error) {
+          console.error('Error sending email:', error);
+        }
+      }
+      else{
+        setWrong(true);
+        setTimeout(() => {
+          setWrong(false);
+          // navigate('/');
+        }, 1500);
+      }
+    }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Delivery Details:', deliveryDate);
-    setDeliveryDate({
-      day: '01',
-      month: 'January',
-      year: '2020',
-    });
-  };
+  useEffect(() => {
+    // This will run after aim has been updated to "bye"
+    sendEmail();
+  }, [emailData]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="container mt-24 lg:mt-6 mx-auto p-5 ">
@@ -109,77 +158,14 @@ const CakeOrderForm = () => {
       </div>
       <div className="mb-3">
       <h2 className="text-2xl font-bold mb-2">Delivery Date</h2>
-
-          <div className="-mx-2 flex items-end">
-            <div className="px-2 w-2/8">
-              <div>
-                <select
-                  className="form-select w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer"
-                  value={deliveryDate.day}
-                  onChange={(e) =>
-                    setDeliveryDate({ ...deliveryDate, day: e.target.value })
-                  }
-                >
-                  {/* Options for day */}
-                  {[...Array(31).keys()].map((day) => (
-                    <option key={day + 1} value={day + 1}>
-                      {day + 1}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-            <div className="px-2 w-3/8">
-              <div>
-                <select
-                  className="form-select w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer"
-                  value={deliveryDate.month}
-                  onChange={(e) =>
-                    setDeliveryDate({ ...deliveryDate, month: e.target.value })
-                  }
-                >
-                  {/* Options for month */}
-                  {[
-                    'January',
-                    'February',
-                    'March',
-                    'April',
-                    'May',
-                    'June',
-                    'July',
-                    'August',
-                    'September',
-                    'October',
-                    'November',
-                    'December',
-                  ].map((month) => (
-                    <option key={month} value={month}>
-                      {month}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-            <div className="px-2 w-3/8">
-              <select
-                className="form-select w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer"
-                value={deliveryDate.year}
-                onChange={(e) =>
-                  setDeliveryDate({ ...deliveryDate, year: e.target.value })
-                }
-              >
-                {/* Options for year */}
-                {[...Array(2).keys()].map((year) => {
-                  const currentYear = new Date().getFullYear();
-                  return (
-                    <option key={currentYear + year} value={currentYear + year}>
-                      {currentYear + year}
-                    </option>
-                  );
-                })}
-              </select>
-            </div>
-          </div>
+{/*  */}  <input
+          className="border rounded w-full p-2"
+          placeholder="19-12-2023"
+              type="date"
+              value={deliveryDate}
+              onChange={(e) => setDeliveryDate(e.target.value)}
+              required
+            />
         </div>
       <div className="mb-4">
         <h2 className="text-2xl font-bold mb-2">Cake Description</h2>
@@ -190,16 +176,92 @@ const CakeOrderForm = () => {
           onChange={(e) => setDescription(e.target.value)}
         />
       </div>
-      <form ref={form} onSubmit={sendEmail}>
-      <label>Name</label>
-      <input type="text" name="selectedTheme" value={selectedTheme} />
-        <button type="submit" className="bg-blue-400 hover:bg-blue-500 mt-4">
+       <div className="mb-4">
+        <h2 className="text-2xl font-bold mb-2">Name</h2>
+        <input
+          className="border rounded w-full p-2"
+          placeholder="John Smith"
+              type="text"
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
+              required
+            />
+      </div>
+      <div className="mb-4">
+        <h2 className="text-2xl font-bold mb-2">Address</h2>
+        <input
+          className="border rounded w-full p-2"
+          placeholder="123 Main St, City, Country"
+              type="text"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              required
+            />
+      </div>
+      <div  className="mb-4">
+      <h2 className="text-2xl font-bold mb-2">City</h2>
+      <select
+                  className="form-select w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer"
+                  value={city}
+                  onChange={(e) =>
+                    setCity( e.target.value )
+                  }
+                  required
+                >
+                  {/* Options for city */}
+                  {[
+                    '','Karur','Erode','Tirpur','Namakkal'
+                  ].map((city) => (
+                    <option key={city} value={city}>
+                      {city}
+                    </option>
+                  ))}
+                </select>
+      </div>
+      {/* <div className="mb-4">
+        <h2 className="text-2xl font-bold mb-2">District</h2>
+        <input
+          className="border rounded w-full p-2"
+          placeholder="Erode"
+              type="text"
+              value={address}
+              onChange={(e) => setDistrict(e.target.value)}
+              required
+            />
+      </div> */}
+      <div className="mb-4">
+        <h2 className="text-2xl font-bold mb-2">Phone Number</h2>
+        <input
+          className="border rounded w-full p-2"
+          placeholder="+91XXXXXXXXXX"
+              type="text"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              required
+            />
+      </div>
+     
+        <button  onClick={handleButtonClick} className="bg-blue-400 hover:bg-blue-500 mt-4">
           Place Order
         </button>
-      </form>
-    </div>
+        {orderPlaced && (
+            <div
+              className="font-bold flex items-center absolute  bg-green-500 text-white rounded p-2 transition-transform duration-300 animate-bounce"
+            >
+              <h1>Order Placed</h1> <AiOutlineCheck/>
+            </div>
+          )}
+        {wrong && (
+            <div
+              className="font-bold flex items-center absolute  bg-red-500 text-white rounded p-2 transition-transform duration-300 animate-bounce"
+            >
+              <h1>Fill all the column</h1>
+            </div>
+          )}
+     </div>
     </div>
   );
 };
 
 export default CakeOrderForm;
+

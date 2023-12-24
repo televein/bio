@@ -36,7 +36,7 @@ function Category() {
         <hr />
         {/* Display category */}
         {foods.length > 0 ? (
-          <div className="grid grid-col md:grid-cols-2 lg:grid-cols-3 lg:m-5 lg:p-8 gap-6 bg-transparent rounded-2xl">
+          <div className="grid grid-col md:grid-cols-2 lg:grid-cols-4 lg:m-5 lg:p-8 gap-6 bg-transparent rounded-2xl">
             {foods.map((item, index) => (
               <FoodCard key={index} item={item} />
             ))}

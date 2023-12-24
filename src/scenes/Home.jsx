@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import LatestMenu from "../components/LatestMenu";
 import Categories from "../components/LatestCategories";
 import ImageSlider from "../components/ImageSlider";
+// import Email from "../components/Email";
 
 
 function Home() {
@@ -52,6 +53,7 @@ function Home() {
       
       <ImageSlider slides={slides} parentWidth={containerDimensions.width} parentHeight={containerDimensions.height} />
       </div>
+      {/* <Email /> */}
       <LatestMenu />
       <Categories />
     </div>

@@ -64,42 +64,42 @@ const ImageSlider = ({slides , parentWidth}) => {
     
   };
 
-  const dotStyles1 = {
-    right: '48%',
-    position: 'absolute',
-    bottom: '0%',
+  // const dotStyles1 = {
+  //   right: '48%',
+  //   position: 'absolute',
+  //   bottom: '0%',
    
  
-    fontSize: '20px',
-    color: '#fff',
-    zIndex: 1,
-    cursor: 'pointer',
-    margin: '0px 3px',
-  }
-  const dotStyles2 = {
-    right: '50%',
-      position: 'absolute',
-    bottom: '0%',
+  //   fontSize: '20px',
+  //   color: '#fff',
+  //   zIndex: 1,
+  //   cursor: 'pointer',
+  //   margin: '0px 3px',
+  // }
+  // const dotStyles2 = {
+  //   right: '50%',
+  //     position: 'absolute',
+  //   bottom: '0%',
    
  
-    fontSize: '20px',
-    color: '#fff',
-    zIndex: 1,
-    cursor: 'pointer',
-    margin: '0px 3px',
-  }
-  const dotStyles3 = {
-    right: '52%',
-    position: 'absolute',
-    bottom: '0%',
+  //   fontSize: '20px',
+  //   color: '#fff',
+  //   zIndex: 1,
+  //   cursor: 'pointer',
+  //   margin: '0px 3px',
+  // }
+  // const dotStyles3 = {
+  //   right: '52%',
+  //   position: 'absolute',
+  //   bottom: '0%',
    
  
-    fontSize: '20px',
-    color: '#fff',
-    zIndex: 1,
-    cursor: 'pointer',
-    margin: '0px 3px',
-  }
+  //   fontSize: '20px',
+  //   color: '#fff',
+  //   zIndex: 1,
+  //   cursor: 'pointer',
+  //   margin: '0px 3px',
+  // }
   // const dotStyles = {
   //   position: 'absolute',
   //   bottom: '0%',
@@ -156,11 +156,11 @@ const ImageSlider = ({slides , parentWidth}) => {
     <div style={sliderStyles}>
       <div style={leftArrowStyles} onClick={goToPrevious}>⧀</div>
       <div style={rightArrowStyles} onClick={goToNext}>⧁</div>
-      <div style={dotsContainerStyles}>
+      {/* <div style={dotsContainerStyles}>
       <div style={dotStyles1} onClick={() => gotoSlide(2)}>◉</div>
       <div style={dotStyles2} onClick={() => gotoSlide(1)}>◉</div>
       <div style={dotStyles3} onClick={() => gotoSlide(0)}>◉</div>
-      </div>
+      </div> */}
       
       <div style={slidesContainerOverflowStyles}>
         <div style={getSlidesContainerWithWidth()}>

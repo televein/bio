@@ -77,7 +77,7 @@ function Food() {
                 <h2 className=""><u>Description</u></h2>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni voluptates ea vel officiis minima dolorum quae nostrum culpa? Dolores soluta facere sapiente aliquid, esse at illo temporibus ea quaerat.</p>
                 </div>
-                <div><b>Price:</b> <span  className="font-semibold">${foods.price}</span></div>
+                {/* <div><b>Price:</b> <span  className="font-semibold">${foods.price}</span></div>
                 <div className="flex flex-row gap-3 justify-start items-center">
                 <button
             onClick={handleAddToCart}
@@ -91,7 +91,7 @@ function Food() {
             >
               <h1>Added to Cart</h1> <AiOutlineCheck/>
             </div>
-          )}</div>
+          )}</div> */}
               </div>
             ) : (
               <p className="m-4 p-5">

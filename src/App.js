@@ -16,6 +16,7 @@ import Search from './scenes/Search';
 import Categories from './scenes/Categories';
 import Category from './scenes/Category';
 import Food from './scenes/Food';
+import Email from './components/Email';
 import { CartProvider } from './CartContext';
 import { AuthProvider } from './components/AuthContext';
 
@@ -56,6 +57,7 @@ function App() {
           <Route path="/order" element={<Order />} />
           <Route path="/address" element={<Address />} />
           <Route path="/imageslider" element={<ImageSlider />} />
+          <Route path="/email" element={<Email />} />
         </Routes>
         <Footer />
       </AuthProvider>

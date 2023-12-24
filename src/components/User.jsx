@@ -117,69 +117,12 @@ function User() {
               <strong >Password:</strong> 
              {localStorage.getItem('password') }
             </p>
-            <Link to="/address" className="bg-blue-400 hover:bg-blue-500 px-5 py-1 hover:shadow-lg rounded-full ">
+            {/* <Link to="/address" className="bg-blue-400 hover:bg-blue-500 px-5 py-1 hover:shadow-lg rounded-full ">
                 <button >
                   Address
                 </button>
-              </Link>
-              <div className="mt-5 p-5 border border-gray-200">
-      <h1 className="font-bold mb-2">Address:</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label className="text-gray-600 font-semibold text-sm mb-2 ml-1">
-            Full Name
-          </label>
-          <div>
-            <input
-              className="w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors"
-              placeholder="John Smith"
-              type="text"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
-              required
-            />
-          </div>
-        </div>
-        <div className="mb-3">
-          <label className="text-gray-600 font-semibold text-sm mb-2 ml-1">
-            Address
-          </label>
-          <div>
-            <input
-              className="w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors"
-              placeholder="123 Main St, City, Country"
-              type="text"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              required
-            />
-          </div>
-        </div>
-        <div className="mb-3">
-          <label className="text-gray-600 font-semibold text-sm mb-2 ml-1">
-            Phone Number
-          </label>
-          <div>
-            <input
-              className="w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors"
-              placeholder="+91XXXXXXXXXX"
-              type="text"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-              required
-            />
-          </div>
-        </div>
-        
-        <button
-          type="submit"
-          className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
-        >
-          Submit
-        </button>
-      </form>
-    </div> 
-            <h1  className="text-grey-600 font-bold text-2xl lg:text-3xl py-5 text-left">Orders</h1>
+              </Link> */}
+                    <h1  className="text-grey-600 font-bold text-2xl lg:text-3xl py-5 text-left">Orders</h1>
             {/* Add more user details as needed */}
           </div>
         {/* ) : (
