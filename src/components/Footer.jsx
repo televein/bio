@@ -1,7 +1,7 @@
 import React from "react";
 import { FaInstagram,  FaWhatsapp } from "react-icons/fa";
 
-import { FaXTwitter } from "react-icons/fa6";
+//import { FaXTwitter } from "react-icons/fa6";
 import { FiMail } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
@@ -16,33 +16,31 @@ function Footer() {
         <div className="max-w-[1240px] mx-auto py-10 px-4 grid lg:grid-cols-3 gap-8">
           <div>
             <p className="py-4">
-              Lorem, ipsum dolor sit amet consectetur{" "}
-              <span className="text-blue-500">Tastyy Restaurant</span> elit. Id odit
-              ullam iste repellat consequatur libero reiciendis, blanditiis
-              accusantium.
+              Biocakes: Elevate your moments with our{" "}
+              <span className="text-blue-500">Homemade</span>  delights, blending organic goodness and irresistible flavors. From classic to innovative, indulge in cakes that redefine sweet perfection.
             </p>
-            <div className="flex justify-between md:w-[75%] my-6">
-              <a href="https://wa.me/234">
+            <div className="flex justify-around md:w-[75%] my-6">
+              <a href="https://wa.me/9443512036">
                 {" "}
                 <FaWhatsapp
                   size={30}
                   className="hover:scale-110 duration-300 hover:text-blue-500"
                 />{" "}
               </a>
-              <a href="https://instagram.com/chefkim_">
+              <a href="https://instagram.com/bio_cakes_">
                 {" "}
                 <FaInstagram
                   size={30}
                   className="hover:scale-110 duration-300 hover:text-blue-500"
                 />{" "}
               </a>
-              <a href="https://twitter.com/adarhx">
+              {/* <a href="https://twitter.com/adarhx">
                 <FaXTwitter
                   size={30}
                   className="hover:scale-110 duration-300 hover:text-blue-500"
                 />
-              </a>
-              <a href="mailto:chefkimkitchenn@gmail.com">
+              </a> */}
+              <a href="mailto:biocakes@gmail.com">
                 <FiMail
                   size={30}
                   className="hover:scale-110 duration-300 hover:text-blue-500"
@@ -51,10 +49,10 @@ function Footer() {
             </div>
             <h3 className="text-sm">Made with Love by Code Uchay</h3>
           </div>
-          <div className="lg:col-span-2 flex justify-between sm:mx-10 lg:mx-14  mt-6">
+          {  /*  <div className="lg:col-span-2 flex justify-between sm:mx-10 lg:mx-14  mt-6"> */}
             <div>
               <h6 className="font-medium text-blue-500">Links</h6>
-              <ul>
+              <ul className=" flex flex-col">
                 <li className="py-2 text-sm hover:text-blue-600 cursor-pointer">
                   {" "}
                   <Link to="/">Home</Link>
@@ -67,12 +65,11 @@ function Footer() {
                 </li>
               </ul>
             </div>
-            <div>
+            {/* <div>
               <h6 className="font-medium text-blue-500">Support</h6>
               <ul>
                 <li className="py-2 text-sm ">
-                  About 
-                  
+                  About
                 </li>
                 <li className="py-2 text-sm ">
                   FAQ
@@ -81,8 +78,8 @@ function Footer() {
                   Ts&Cs
                 </li>
               </ul>
-            </div>
-          </div>
+            </div> */}
+        
         </div>
       </div>
     </div>
