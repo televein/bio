@@ -71,7 +71,8 @@ function Footer() {
               <h6 className="font-medium text-blue-500">Support</h6>
               <ul>
                 <li className="py-2 text-sm ">
-                  About
+                  About 
+                  
                 </li>
                 <li className="py-2 text-sm ">
                   FAQ
